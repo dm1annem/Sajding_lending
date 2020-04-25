@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-   
+   <sajding-main-wrapper/>
   </div>
 </template>
 
 <script>
+import sajdingMainWrapper from './components/sajding-main-wrapper'
 
 export default {
   name: 'App',
+  components: {
+    sajdingMainWrapper,
+  }
   
 }
 </script>
