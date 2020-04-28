@@ -1,6 +1,7 @@
 <template>
     <div class="sajding-main-wrapper"> 
-    <p>{{ msg }}</p>
+    
+    <sajding-heder/>
     <sajding-nav/>
     
     </div>
@@ -8,15 +9,17 @@
 
 <script>
 import sajdingNav from './sajding-nav'
+import sajdingHeder from './sajding-heder'
 
 export default {
     name: 'sajding-main-wrapper',
     components: {
-       sajdingNav, 
+        sajdingHeder,
+        sajdingNav, 
     },
     data() {
         return {
-            msg: 'Я главная обёртка'
+            
             
         }
     },
@@ -25,5 +28,16 @@ export default {
 </script>
 
 <style>
+.sajding-main-wrapper{
+    width: 100%;
+}
+.container {
+    display: grid;
+    justify-content: stretch;
+    /*grid-template-rows: 1fr;
+    justify-self: centr;
+    width: 100%;*/
+    max-width: 1200px;
+}
 
 </style>
