@@ -33,11 +33,9 @@ export default {
 }
 .container {
     display: grid;
-    justify-content: stretch;
-    /*grid-template-rows: 1fr;
-    justify-self: centr;
-    width: 100%;*/
-    max-width: 1200px;
+    max-width: 1220px;
+    margin: 0 10px 0 10px;
+    justify-self: center;
 }
 
 </style>

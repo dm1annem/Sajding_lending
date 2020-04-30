@@ -24,7 +24,7 @@ export default {
 <style>
 .sajding-nav {
     width: 100%;
-    background-color: #5bc033;
+    background-color: var(--nav-color);
 }
 .sajding-nav-content {
     grid-template-columns: 1fr 100vh 1fr;

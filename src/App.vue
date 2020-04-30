@@ -17,8 +17,10 @@ export default {
 </script>
 
 <style>
+:root{
+  --nav-color: #5bc033
+}
 body {
-  justify-content: center;
   margin: 0px;
   padding: 0px;
 
