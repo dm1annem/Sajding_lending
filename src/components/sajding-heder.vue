@@ -1,11 +1,11 @@
 <template>
     <div class="sajding-heder">
-        <div class="sajding-heder-content">
-            <div class="heder-logo">
+        <div class="sajding-heder-content" v-bind:style="styleContent">
+            <div class="heder-logo" v-bind:style="styleLogo">
                 <img :src=" require('../assets/img/LOGO-SAYDING.png')"  alt="Логотип" title="САЙДИНГ-БРЯНСК"> 
             </div>
             
-            <div class="heder-icons">
+            <div v-if="show" class="heder-icons">
                
                 <div class="heder-icon-1">
                     <img :src="require('../assets/img/icon-bilder.png')"> 
@@ -24,7 +24,7 @@
                 
             </div>
 
-            <div class="fone-in-heder">
+            <div class="fone-in-heder" :style="styleFone">
                 <span>+7 930-820-02-25</span> 
                 <span>+7(4832)30-02-25</span> 
                 <a>
@@ -43,10 +43,50 @@
 export default {
     name: 'sajding-heder',
     data(){
-        
-
+        return{
+            width: null,
+            show: null,
+            styleContent: {},
+            styleLogo: {},
+            styleFone: {}
+        }
     },
+
+    methods: {
+        updateWidth() {
+            this.width = window.innerWidth;
+        },
+     },
+
+    watch: {
+        width() {
+            if (this.width > 970) {
+                this.show = true
+                this.styleContent.gridTemplateColumns = '1fr 1fr 1fr';
+                this.styleLogo.justifyItems =  'left';
+                this.styleFone.justifyItems = 'end';
+            }
+            else {
+            this.show = false;
+            this.styleContent.gridTemplateColumns = '1fr';
+            this.styleLogo.justifyItems =  'center';
+            this.styleFone.justifyItems = 'center';
+            }
+        }
+    },
+
+    created() {
+    window.addEventListener('resize', this.updateWidth,);
+    this.updateWidth();
+    },
+
 }
+
+ 
+
+
+   
+
 </script>
 
 <style>
@@ -57,13 +97,13 @@ export default {
 }
 .sajding-heder-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    
     margin: 0 50px;
 }
 
 .heder-logo{
     display: grid;
-    justify-items: left;
+    
 }
 
 .heder-icons{
@@ -79,7 +119,6 @@ export default {
 }
 .fone-in-heder {
     display: grid;
-    justify-items: end;
     align-content: flex-start;
 
 }
