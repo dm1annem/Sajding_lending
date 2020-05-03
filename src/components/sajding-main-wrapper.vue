@@ -1,7 +1,9 @@
 <template>
     <div class="sajding-main-wrapper"> 
-    
-    <sajding-heder/>
+    <p>Из главной обёртки: {{ currentDevise }}</p>
+    <sajding-heder
+    :device="currentDevise"
+    />
     <sajding-nav/>
     
     </div>
@@ -19,11 +21,36 @@ export default {
     },
     data() {
         return {
+            screenWidth: null,
+            currentDevise: null,
             
             
         }
     },
-    
+    methods: {
+        updateWidth() {
+            this.screenWidth = window.innerWidth;
+        },
+    },
+
+    watch: {
+        screenWidth() {
+            if (this.screenWidth <= 576) {
+                this.currentDevise = 'modile'
+            }
+            else if (576 < this.screenWidth && this.screenWidth <= 970) {
+                this.currentDevise = 'tablet'
+            }
+            else if (this.screenWidth > 970) {
+                this.currentDevise = 'desktop'
+            }
+        }
+    },
+
+    created() {
+    window.addEventListener('resize', this.updateWidth,);
+    this.updateWidth();
+    },
 }
 </script>
 

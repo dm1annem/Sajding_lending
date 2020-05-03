@@ -3,6 +3,7 @@
         <div class="sajding-heder-content" v-bind:style="styleContent">
             <div class="heder-logo" v-bind:style="styleLogo">
                 <img :src=" require('../assets/img/LOGO-SAYDING.png')"  alt="Логотип" title="САЙДИНГ-БРЯНСК"> 
+                <p> Из хедера:  {{ device }} </p>
             </div>
             
             <div v-if="show" class="heder-icons">
@@ -42,6 +43,9 @@
 <script>
 export default {
     name: 'sajding-heder',
+    props: [
+        'device',
+    ],
     data(){
         return{
             width: null,
